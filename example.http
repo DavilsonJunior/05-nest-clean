@@ -1,8 +1,0 @@
-POST http://localhost:3333/accounts
-content-type: application/json
-
-{
-    "name": "Davilson2",
-    "email": "sdsds",
-    "password": "123456"
-}
