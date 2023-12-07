@@ -1,21 +1,35 @@
 @baseUrl = http://localhost:3333
-# @name = create_account
+@authToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YzJkYzUzOC02N2M2LTRhN2YtYTE0Mi0wYzZjYjI0NDE1NWEiLCJpYXQiOjE3MDE5MjAxODZ9.p6uLftcgNTjkf12n1SY1HNd-W7Aq75DB4HecgYX7iQZpLyJP7xnZ2bZ9lRZEsYnv975d1uVqaHC3TkBP7KANU1QKtTpwkNd1uQeCJW1VUr-EZqK44zgCOaAOUfxByPASrjuGYaV_Ed-SVExq1yM1-uXooXTarfBhAEHkR9RrjBWTs5RraFrb378v6xTkuuAneS8kDBpWZsyZ1ZmWQLoCQT3OxQUfSJAdl0rUwOyfxzkMoI8T3zkRrM-0kq5iKaLJ4Ww_CZ3MGI7GAhWMVmEgZIA6mJgGy7MJuGww81uqZLwcP_sEDotjoSO1_Y9YXic4twAgRX3eMR9ASFJdW_6PRA
+
+@name = create_account
 POST {{baseUrl}}/accounts
 content-type: application/json
 
 {
-    "name": "Davilson2",
-    "email": "sdsds",
+    "name": "Davilson Junior",
+    "email": "davilsonjunior.jobs@gmail.com",
     "password": "123456"
 }
 
 ###
 
-# @name = authenticate
+@name = authenticate
 POST {{baseUrl}}/sessions
 content-type: application/json
 
 {
-    "email": "sdsds",
+    "email": "davilsonjunior.jobs@gmail.com",
     "password": "123456"
+}
+
+###
+
+@name = create_question
+POST {{baseUrl}}/questions
+content-type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "title": "Nova peegunta sdsa SSS",
+    "content": "Conteudo da pergunta 2"
 }
