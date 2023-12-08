@@ -33,3 +33,10 @@ Authorization: Bearer {{authToken}}
     "title": "Nova peegunta sdsa SSS",
     "content": "Conteudo da pergunta 2"
 }
+
+###
+
+@name = fetch_recent_questions
+GET {{baseUrl}}/questions?page=2
+content-type: application/json
+Authorization: Bearer {{authToken}}
