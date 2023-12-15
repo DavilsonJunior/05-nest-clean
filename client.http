@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3333
-@authToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YzJkYzUzOC02N2M2LTRhN2YtYTE0Mi0wYzZjYjI0NDE1NWEiLCJpYXQiOjE3MDE5MjAxODZ9.p6uLftcgNTjkf12n1SY1HNd-W7Aq75DB4HecgYX7iQZpLyJP7xnZ2bZ9lRZEsYnv975d1uVqaHC3TkBP7KANU1QKtTpwkNd1uQeCJW1VUr-EZqK44zgCOaAOUfxByPASrjuGYaV_Ed-SVExq1yM1-uXooXTarfBhAEHkR9RrjBWTs5RraFrb378v6xTkuuAneS8kDBpWZsyZ1ZmWQLoCQT3OxQUfSJAdl0rUwOyfxzkMoI8T3zkRrM-0kq5iKaLJ4Ww_CZ3MGI7GAhWMVmEgZIA6mJgGy7MJuGww81uqZLwcP_sEDotjoSO1_Y9YXic4twAgRX3eMR9ASFJdW_6PRA
+@authToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YzJkYzUzOC02N2M2LTRhN2YtYTE0Mi0wYzZjYjI0NDE1NWEiLCJpYXQiOjE3MDI2MDM0Njl9.dk8qS1JHxuWpXY8I5dDXdr_nBOZERBQ6GNK7GVdcor7Vla8Y_nFt1Y8gCHIJ9U-6O3Fvyy658lGet_mfHpLYj4O2lWNywXGz3RME9QSCTYuuDACSymERoFpCpyoYN3F88JGws8rbxFgTQgUJedyowNtOPySsAST4g-kgvXZdXIE5Rkda4zjUIslnCgbuoVT7oHbECxmsdoaOO3fKm58WnjyNTE-LdB-nZx2CQD35AHiOR8pbVY24o4VUKrWeZ7jYmlnb9OZoeKOfQ43EVf9FxX3gwijX4QUljebhlriTtgtlLPIL0HeicHy98OENXb9pU_zVo-teLP0AZKLxeQGVpg
 
 @name = create_account
 POST {{baseUrl}}/accounts
@@ -30,13 +30,13 @@ content-type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "title": "Nova peegunta sdsa SSS",
-    "content": "Conteudo da pergunta 2"
+    "title": "Nova peegunta new 2",
+    "content": "Conteudo da pergunta 3"
 }
 
 ###
 
 @name = fetch_recent_questions
-GET {{baseUrl}}/questions?page=2
+GET {{baseUrl}}/questions
 content-type: application/json
 Authorization: Bearer {{authToken}}

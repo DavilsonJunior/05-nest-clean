@@ -3,8 +3,8 @@ import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { z } from 'zod'
+import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
 
 const createQuestionBodySchema = z.object({
   title: z.string(),
@@ -18,8 +18,7 @@ type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>
 @Controller('/questions')
 @UseGuards(JwtAuthGuard)
 export class CreateQuestionController {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(private prisma: PrismaService) {}
+  constructor(private createQuestion: CreateQuestionUseCase) {}
 
   @Post()
   async handle(
@@ -29,33 +28,11 @@ export class CreateQuestionController {
     const { title, content } = body
     const userId = user.sub
 
-    const slug = this.slugify(title)
-
-    await this.prisma.question.create({
-      data: {
-        authorId: userId,
-        title,
-        content,
-        slug,
-      },
+    await this.createQuestion.execute({
+      title,
+      content,
+      authorId: userId,
+      attachmentsIds: [],
     })
-  }
-
-  private removeAccents(inputStr: string): string {
-    return inputStr.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-  }
-
-  private slugify(text: string): string {
-    // Remove accents
-    text = this.removeAccents(text)
-
-    // Convert string to lowercase and replace spaces with hyphens
-    text = text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/[-\s]+/g, '-')
-      .trim()
-
-    return text
   }
 }
